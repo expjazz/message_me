@@ -11,12 +11,15 @@
       <div class="menu">
         <a class="item">Log out</a>
         <%= link_to 'Log in', login_path, class: 'item' %>
-        <a class="item">Sign up</a>
+        <%= link_to 'Sign up', signup_path, class: 'item' %>
       </div>
     </div>
+
+    <% if logged_in?  %>
     <div class="item">
-        <div class="ui primary button">Sign Up</div>
+      <%= link_to current_user.username, "#"%>
     </div>
+    <% end %>
     </div>
   </div>
 </div>

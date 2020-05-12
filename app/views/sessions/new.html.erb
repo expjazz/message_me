@@ -10,28 +10,28 @@ Welcome to message me
 <div class="ui placeholder segment">
   <div class="ui two column very relaxed stackable grid">
     <div class="column">
-      <div class="ui form">
+      <%= form_with(scope: :session, url: login_path, local: true, class: 'ui form') do |f|%>
         <div class="field">
-          <label>Username</label>
+          <%= f.label :username %>
           <div class="ui left icon input">
-            <input type="text" placeholder="Username">
+            <%= f.text_field :username%>
             <i class="user icon"></i>
           </div>
         </div>
         <div class="field">
-          <label>Password</label>
+          <%= f.label :password %>
           <div class="ui left icon input">
-            <input type="password">
+            <%= f.password_field :password %>
             <i class="lock icon"></i>
           </div>
         </div>
-        <div class="ui orange submit button">Login</div>
-      </div>
+        <%= f.submit 'Log In', class: 'ui orange submit button'%>
+      <% end %>
     </div>
     <div class="middle aligned column">
       <div class="ui big orange button">
         <i class="signup white icon"></i>
-        Sign Up
+        <%= link_to 'Sign up', signup_path %>
       </div>
     </div>
   </div>

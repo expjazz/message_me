@@ -1,0 +1,31 @@
+<% if @user.errors.any? %>
+ <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+ 
+    <li>
+      <p> <%= msg%> </p>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2 class="ui center aligned big icon header">
+  <i class="orange baseball ball icon"></i>
+  Signup to have access!
+</h2>
+
+<%= form_with(model: @user, local: true, class: 'ui form') do |f| %>
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username, placeholder: 'Username '%>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, placeholder: 'example@example.com'%>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <%= f.submit 'Signup', class: 'ui button'%>
+<% end %>
