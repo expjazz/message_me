@@ -14,4 +14,8 @@ class SessionsController < ApplicationController
       flash.now[:alert] = 'Something went wrong. Try again.'
     end
   end
+
+  def destroy
+    session[:user_id] = nil if logged_in?
+  end
 end
