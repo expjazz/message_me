@@ -12,9 +12,7 @@
   <body>
     <%= render 'layouts/header'%>
     <div class="ui container">
-    <% flash.each do |msg| %>
-      <p><%= msg %> </p>
-    <% end %>
+    <%= render 'layouts/messages'%>
     <%= yield %>
     </div>
   </body>

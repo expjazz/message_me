@@ -29,10 +29,12 @@ Welcome to message me
       <% end %>
     </div>
     <div class="middle aligned column">
-      <div class="ui big orange button">
-        <i class="signup white icon"></i>
-        <%= link_to 'Sign up', signup_path %>
-      </div>
+
+        <%= link_to signup_path, :action => 'go' do %>
+          <div class="ui big orange button">
+            <i class="signup white icon"></i>Sign up
+          </div>
+        <% end %>
     </div>
   </div>
   <div class="ui vertical divider">

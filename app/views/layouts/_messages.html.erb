@@ -1,0 +1,14 @@
+<% flash.each do |msg_type, msg_content| %>
+<div class="ui <%= msg_type %> message transition">
+  <i class="close icon"></i>
+  <div class="header">
+    <% if msg_content.is_a?(Array)%>
+      <% msg_content.each do |msg| %>
+        <p> <%= msg %> </p>
+      <% end %>
+    <% else %>
+      <%= msg_content %>
+    <% end %>
+  </div>
+</div>
+<% end %>

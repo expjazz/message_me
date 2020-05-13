@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
+  before_action :require_user
   def new; end
 
   def create
@@ -9,7 +10,8 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to root_path
     else
-      redirect_to signup_path
+      flash[:error] = @message.errors.full_messages
+      redirect_to root_path
     end
   end
 
