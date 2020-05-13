@@ -8,7 +8,8 @@ class MessagesController < ApplicationController
     @message = Message.new(msg_params)
     @message.user = current_user
     if @message.save
-      redirect_to root_path
+      ActionCable.server.broadcast 'chatroom_channel',
+                                   msg: message_render(@message)
     else
       flash[:error] = @message.errors.full_messages
       redirect_to root_path
@@ -23,5 +24,9 @@ class MessagesController < ApplicationController
 
   def msg_params
     params.require(:message).permit(:body)
+  end
+
+  def message_render(msg)
+    render(partial: 'message', locals: { message: msg })
   end
 end
